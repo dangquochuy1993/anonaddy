@@ -1,17 +1,17 @@
 @component('mail::message')
 
-# Disallowed Reply/Send Attempt
+# Nỗ lực trả lời/gửi bị chặn
 
-An attempt to send or reply from your alias **{{ $aliasEmail }}** was just made which failed because your recipient **{{ $recipient }}** has disallowed replying and sending.
+Có một yêu cầu gửi hoặc trả lời bằng bí danh **{{ $aliasEmail }}** nhưng bị từ chối vì người nhận **{{ $recipient }}** không cho phép trả lời/gửi.
 
-The attempt was trying to send the message to the following destination: **{{ $destination }}**
+Yêu cầu này đang cố gửi đến: **{{ $destination }}**
 
-If this attempt was made by you, then you need to visit the [recipients page]({{ config('app.url').'/recipients' }}) and update the "can reply/send" setting for **{{ $recipient }}**.
+Nếu đây là hành động của bạn, hãy tới [trang người nhận]({{ config('app.url').'/recipients' }}) và bật quyền “can reply/send” cho **{{ $recipient }}**.
 
-If this attempt was not made by you, then someone else may be attempting to send a message from your alias. Make sure you have a suitable DMARC policy in place (with p=quarantine or p=reject) along with SPF and DKIM records to protect your recipient's email address from being spoofed.
+Nếu không phải bạn thực hiện, có thể ai đó đang cố gửi email từ bí danh của bạn. Hãy đảm bảo miền người nhận có cấu hình DMARC phù hợp (p=quarantine hoặc p=reject) cùng bản ghi SPF và DKIM để tránh bị giả mạo.
 
 @if($authenticationResults)
-These are the authentication results for the message:
+Kết quả xác thực của thư:
 
 {{ $authenticationResults }}
 @endif

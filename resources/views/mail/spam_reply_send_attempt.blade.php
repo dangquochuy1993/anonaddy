@@ -1,21 +1,21 @@
 @component('mail::message')
 
-# Attempted Reply/Send Failed
+# Nỗ lực trả lời/gửi thất bại
 
-An attempt to send or reply from your alias **{{ $aliasEmail }}** was just made from **{{ $recipient }}** which failed because it didn't pass authentication checks and could be spoofed.
+Có một yêu cầu gửi hoặc trả lời bằng bí danh **{{ $aliasEmail }}** từ **{{ $recipient }}** nhưng thất bại vì không vượt qua kiểm tra xác thực và có thể bị giả mạo.
 
-In order to send or reply from an alias there must be a valid DMARC policy present for **{{ \Illuminate\Support\Str::afterLast($recipient, '@') }}** and your message must be permitted by that DMARC policy.
+Để gửi hoặc trả lời từ bí danh, miền **{{ \Illuminate\Support\Str::afterLast($recipient, '@') }}** phải có chính sách DMARC hợp lệ và thư của bạn phải được phép theo chính sách đó.
 
-The attempt was trying to send the message to the following destination: **{{ $destination }}**
+Yêu cầu đang cố gửi đến: **{{ $destination }}**
 
 @if($authenticationResults)
-These are the authentication results for the message:
+Kết quả xác thực của thư:
 
 {{ $authenticationResults }}
 @endif
 
-If this attempt was made by yourself, then you need to @if($authenticationResults) inspect the authentication results above and @endif make sure your recipient's domain (**{{ \Illuminate\Support\Str::afterLast($recipient, '@') }}**) has the correct DNS records in place; SPF, DKIM and DMARC.
+Nếu đây là hành động của bạn, @if($authenticationResults)hãy xem các kết quả xác thực ở trên và @endif đảm bảo miền của người nhận (**{{ \Illuminate\Support\Str::afterLast($recipient, '@') }}**) đã cấu hình đúng bản ghi SPF, DKIM và DMARC.
 
-If this attempt was not made by you, then someone else may be attempting to send a message from your alias. Make sure you have a suitable DMARC policy in place (with p=quarantine or p=reject) along with SPF and DKIM records to protect your recipient's email address from being spoofed.
+Nếu không phải bạn thực hiện, có thể ai đó đang cố gửi email từ bí danh của bạn. Hãy cấu hình DMARC phù hợp (p=quarantine hoặc p=reject) cùng với SPF và DKIM để bảo vệ địa chỉ người nhận khỏi bị giả mạo.
 
 @endcomponent

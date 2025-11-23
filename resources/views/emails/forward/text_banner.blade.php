@@ -1,6 +1,6 @@
 <!--banner-info-->
-This email was sent to {{ $aliasEmail }}{{ $aliasDescription ? ' (' . $aliasDescription . ')' : '' }} from {{ $fromEmail }}{!! $replacedSubject !!}.
-To deactivate this alias copy and paste the url below into your web browser.
+Email này được gửi tới {{ $aliasEmail }}{{ $aliasDescription ? ' (' . $aliasDescription . ')' : '' }} từ {{ $fromEmail }}{!! $replacedSubject !!}.
+Để hủy kích hoạt bí danh, hãy sao chép và mở đường dẫn bên dưới trong trình duyệt của bạn.
 
 {{ $deactivateUrl }}
 <!--banner-info-->

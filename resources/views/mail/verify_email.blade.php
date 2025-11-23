@@ -1,18 +1,18 @@
 @component('mail::message')
 
-# Hello!
+# Xin chào!
 
-Please click the button below to verify your email address.
+Vui lòng nhấn nút bên dưới để xác minh địa chỉ email của bạn.
 
 @component('mail::button', ['url' => $verificationUrl])
-Verify Email Address
+Xác minh email
 @endcomponent
 
-If you did not create an account, no further action is required.
+Nếu bạn không tạo tài khoản, hãy bỏ qua email này.
 
 @component('mail::subcopy')
-If you’re having trouble clicking the "Verify Email Address" button, copy and paste the URL below
-into your web browser: <span class="break-all">[{{ $verificationUrl }}]({{ $verificationUrl }})</span>
+Nếu không nhấn được nút “Xác minh email”, hãy sao chép đường dẫn bên dưới
+và dán vào trình duyệt: <span class="break-all">[{{ $verificationUrl }}]({{ $verificationUrl }})</span>
 @endcomponent
 
 @endcomponent

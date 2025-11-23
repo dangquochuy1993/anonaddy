@@ -5,8 +5,8 @@
         <div class="w-full max-w-md">
 
             <div class="flex justify-center text-white mb-6 text-5xl font-bold">
-                <a href="https://anonaddy.com" aria-label="Go to Anonaddy homepage">
-                    <img class="w-48" alt="AnonAddy Logo" src="/svg/logo.svg">
+                <a href="https://anonaddy.com" aria-label="Đi tới trang chủ AnonAddy">
+                    <img class="w-48" alt="Logo AnonAddy" src="/svg/logo.svg">
                 </a>
             </div>
             <div class="flex flex-col break-words bg-white border-2 rounded-lg shadow-lg overflow-hidden">
@@ -16,7 +16,7 @@
                     <div class="px-6 py-8 md:p-10">
 
                         <h1 class="text-center font-bold text-3xl">
-                            Welcome Back!
+                            Chào mừng trở lại!
                         </h1>
 
                         <div class="mx-auto mt-6 w-24 border-b-2 border-grey-200"></div>
@@ -34,7 +34,7 @@
 
                             <input id="username" type="text" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:ring{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="johndoe" required autofocus>
 
-                            <p class="text-xs mt-1 text-grey-600">Note: your username is <b>not</b> your email address.</p>
+                            <p class="text-xs mt-1 text-grey-600">Lưu ý: tên người dùng <b>không phải</b> địa chỉ email của bạn.</p>
 
                             @if ($errors->has('username'))
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -70,9 +70,9 @@
                                 </label>
                             </div>
                             @if (Route::has('password.request'))
-                                <a class="whitespace-nowrap no-underline text-sm mt-4" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Username/Password?') }}
-                                </a>
+                                  <a class="whitespace-nowrap no-underline text-sm mt-4" href="{{ route('password.request') }}">
+                                      {{ __('Forgot Username/Password?') }}
+                                  </a>
                             @endif
                         </div>
 
@@ -86,11 +86,11 @@
                 </form>
             </div>
             @if (Route::has('register'))
-                <p class="w-full text-xs text-center text-indigo-100 mt-6">
-                    Don't have an account?
-                    <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('register') }}">
-                        Register
-                    </a>
+                  <p class="w-full text-xs text-center text-indigo-100 mt-6">
+                      Chưa có tài khoản?
+                      <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('register') }}">
+                          {{ __('Register') }}
+                      </a>
                 </p>
             @endif
         </div>

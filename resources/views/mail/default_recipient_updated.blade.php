@@ -1,12 +1,12 @@
 @component('mail::message')
 
-# Default Recipient Updated
+# Đã cập nhật người nhận mặc định
 
-Your account's default recipient has just been updated from **{{ $defaultRecipient }}** to **{{ $newDefaultRecipient }}**.
+Người nhận mặc định của tài khoản vừa được đổi từ **{{ $defaultRecipient }}** sang **{{ $newDefaultRecipient }}**.
 
-If this change was not made by you, please visit the settings page, log out of all other browser sessions and update your account's password.
+Nếu bạn không thực hiện thay đổi này, hãy mở trang cài đặt, đăng xuất khỏi mọi phiên trình duyệt khác và đổi mật khẩu ngay.
 
 @component('mail::button', ['url' => config('app.url').'/settings'])
-Check Settings
+Xem cài đặt
 @endcomponent
 @endcomponent

@@ -1,16 +1,16 @@
 @component('mail::message')
 
-# Bandwidth Usage Warning
+# Cảnh báo mức sử dụng băng thông
 
-You've used **{{ $bandwidthUsage }}MB out of your {{ $bandwidthLimit }}MB limit** this calendar month ({{ $month }}).</p>
+Bạn đã dùng **{{ $bandwidthUsage }}MB / {{ $bandwidthLimit }}MB** trong tháng ({{ $month }}).</p>
 
-Your bandwidth usage will reset on **{{ $reset }}**.
+Băng thông sẽ được đặt lại vào **{{ $reset }}**.
 
-At the start of each calendar month your bandwidth usage is **reset to 0**.
+Đầu mỗi tháng, mức sử dụng sẽ **trở về 0**.
 
-If you go over your limit we will start rejecting emails until your bandwidth usage drops back below your limit.
+Nếu vượt giới hạn, email gửi đến sẽ bị từ chối cho tới khi bạn xuống dưới ngưỡng.
 
 @component('mail::button', ['url' => config('app.url').'/settings'])
-Check Usage
+Xem mức sử dụng
 @endcomponent
 @endcomponent

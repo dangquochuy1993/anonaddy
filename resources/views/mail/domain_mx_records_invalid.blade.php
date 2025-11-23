@@ -1,14 +1,14 @@
 @component('mail::message')
 
-# Domain MX records invalid
+# Bản ghi MX của tên miền không hợp lệ
 
-A recent DNS record check on your custom domain **{{ $domain }}** on AnonAddy showed that your MX records are no longer pointing to the AnonAddy server. This means that AnonAddy will not be able to handle your emails for you.
+Kiểm tra DNS gần đây cho tên miền tùy chỉnh **{{ $domain }}** cho thấy các bản ghi MX không còn trỏ về máy chủ AnonAddy. Điều này đồng nghĩa AnonAddy sẽ không thể xử lý email của bạn.
 
-If this MX record change was intentional then you can ignore this email.
+Nếu bạn cố ý thay đổi MX thì có thể bỏ qua email này.
 
-Otherwise please visit the domains page on the site by clicking the button below and then rechecking your domain's records to resolve the issue.
+Ngược lại, hãy truy cập trang quản lý tên miền bằng nút bên dưới và kiểm tra lại bản ghi để khắc phục.
 
 @component('mail::button', ['url' => config('app.url').'/domains'])
-Check Domain
+Kiểm tra tên miền
 @endcomponent
 @endcomponent
