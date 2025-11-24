@@ -1,16 +1,16 @@
 @component('mail::message')
 
-# GPG Key Encryption Error
+# Lỗi mã hóa khóa GPG
 
-An error occured while trying to encrypt an email recently forwarded to you by AnonAddy.
+Xảy ra lỗi khi mã hóa email vừa được AnonAddy chuyển tiếp cho bạn.
 
-This was likely caused because the key has expired.
+Nguyên nhân có thể do khóa đã hết hạn.
 
-The fingerprint of the key is: **{{ $recipient->fingerprint }}**
+Dấu vân tay của khóa: **{{ $recipient->fingerprint }}**
 
-Encryption for this recipient has been turned off, please update the key if you wish to continue using encryption.
+Tính năng mã hóa cho người nhận này đã bị tắt. Hãy cập nhật khóa nếu bạn muốn tiếp tục sử dụng.
 
 @component('mail::button', ['url' => config('app.url').'/recipients'])
-Update Key
+Cập nhật khóa
 @endcomponent
 @endcomponent

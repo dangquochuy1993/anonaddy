@@ -1,12 +1,12 @@
 @component('mail::message')
 
-# Username Reminder
+# Nhắc tên đăng nhập
 
-The account associated with this email address has the following username: **{{ $username }}**
+Tài khoản gắn với địa chỉ email này có tên đăng nhập: **{{ $username }}**
 
-If you've also forgotten your password you can use this username to reset it.
+Nếu cũng quên mật khẩu, bạn có thể dùng tên đăng nhập này để đặt lại.
 
 @component('mail::button', ['url' => config('app.url').'/login'])
-Login Now
+Đăng nhập ngay
 @endcomponent
 @endcomponent

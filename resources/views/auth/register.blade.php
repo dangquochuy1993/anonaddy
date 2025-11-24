@@ -4,7 +4,7 @@
     <div class="p-6 bg-indigo-900 min-h-screen flex justify-center items-center">
         <div class="w-full max-w-md">
             <div class="flex justify-center text-white mb-6 text-5xl font-bold">
-                <img class="w-48" alt="AnonAddy Logo" src="/svg/logo.svg">
+                <img class="w-48" alt="Logo AnonAddy" src="/svg/logo.svg">
             </div>
             <div class="flex flex-col break-words bg-white border-2 rounded-lg shadow-lg overflow-hidden">
                 <form class="" method="POST" action="{{ route('register') }}">
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
 
-                            <p class="text-xs mt-1 text-grey-600">This will be your unique subdomain for your aliases<br> e.g. alias@<b>johndoe</b>.{{ config('anonaddy.domain') }}</p>
+                            <p class="text-xs mt-1 text-grey-600">Đây sẽ là tên miền con độc nhất dành cho các bí danh của bạn<br> ví dụ: alias@<b>johndoe</b>.{{ config('anonaddy.domain') }}</p>
 
 
                             @if ($errors->has('username'))
@@ -42,12 +42,12 @@
 
                         <div class="flex flex-wrap mb-6">
                             <label for="email" class="block text-grey-700 text-sm mb-2">
-                                Your Real Email Address:
+                                Địa chỉ email thật của bạn:
                             </label>
 
                             <input id="email" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:ring{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" placeholder="johndoe@example.com" required>
 
-                            <p class="text-xs mt-1 text-grey-600">This is your recipient where emails will be forwarded</p>
+                            <p class="text-xs mt-1 text-grey-600">Đây là người nhận mà email sẽ được chuyển tiếp tới</p>
 
                             @if ($errors->has('email'))
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -58,7 +58,7 @@
 
                         <div class="flex flex-wrap mb-6">
                             <label for="email-confirm" class="block text-grey-700 text-sm mb-2">
-                                Confirm Email Address:
+                                Xác nhận địa chỉ email:
                             </label>
 
                             <input id="email-confirm" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:ring" name="email_confirmation" value="{{ old('email_confirmation') }}" placeholder="johndoe@example.com" required>
@@ -80,13 +80,13 @@
 
                         <div class="flex flex-wrap mb-4 items-center">
                             <label for="captcha" class="block w-full text-grey-700 text-sm">
-                                Verification:
+                                Xác minh:
                             </label>
 
                             <div class="flex grow flex-wrap">
                                 <img src="{{captcha_src('mini')}}" class="shrink-0 h-12 w-16 mr-2 mt-2">
 
-                                <input id="captcha" type="text" class="grow mt-2 appearance-none bg-grey-100 rounded p-3 text-grey-700 focus:ring{{ $errors->has('captcha') ? ' border-red-500' : '' }}" name="captcha" placeholder="Enter the text you see" required>
+                                  <input id="captcha" type="text" class="grow mt-2 appearance-none bg-grey-100 rounded p-3 text-grey-700 focus:ring{{ $errors->has('captcha') ? ' border-red-500' : '' }}" name="captcha" placeholder="Nhập dòng chữ bạn nhìn thấy" required>
                             </div>
 
                             @if ($errors->has('captcha'))
@@ -107,9 +107,9 @@
             </div>
             @if (Route::has('register'))
                 <p class="w-full text-xs text-center text-indigo-100 mt-6">
-                    Already have an account?
+                    Đã có tài khoản?
                     <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
-                        Login
+                        {{ __('Login') }}
                     </a>
                 </p>
             @endif

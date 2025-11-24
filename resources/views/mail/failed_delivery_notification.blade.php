@@ -1,25 +1,25 @@
 @component('mail::message')
 
-# New Failed Delivery
+# Thư chuyển tiếp thất bại
 
 @if($aliasEmail)
-An attempt to deliver a message for your alias **{{ $aliasEmail }}** has failed.
+Có một thư gửi tới bí danh **{{ $aliasEmail }}** nhưng không thành công.
 @else
-An attempt to deliver a message for one of your aliases has failed.
+Có một thư gửi tới một trong các bí danh của bạn nhưng không thành công.
 @endif
 
 @if($originalSender)
-The message was sent by **{{ $originalSender }}** {{ $originalSubject ? 'with subject: ' . $originalSubject : '' }}
+Thư được gửi bởi **{{ $originalSender }}** {{ $originalSubject ? 'với tiêu đề: ' . $originalSubject : '' }}
 
 @elseif($originalSubject)
-The subject of the message was: **{{ $originalSubject }}**
+Tiêu đề của thư: **{{ $originalSubject }}**
 
 @endif
 
-You can head over to the failed deliveries page to see the reason why this delivery was not successful.
+Bạn có thể xem lý do thất bại tại trang Thư lỗi.
 
 @component('mail::button', ['url' => config('app.url').'/failed-deliveries'])
-View Failed Deliveries
+Xem thư lỗi
 @endcomponent
 
 @endcomponent

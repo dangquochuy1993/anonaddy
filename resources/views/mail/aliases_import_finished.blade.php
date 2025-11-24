@@ -1,23 +1,23 @@
 @component('mail::message')
 
-# Aliases Import Finished
+# Nhập bí danh hoàn tất
 
-Your import CSV file had **{{ $totalRows }}** {{ $totalRows == 1 ? 'alias' : 'aliases' }} in total. **{{ $totalImported }}** {{ $totalImported == 1 ? 'alias has' : 'aliases have' }} been successfully imported.
+Tệp CSV bạn nhập có tổng cộng **{{ $totalRows }}** bí danh. **{{ $totalImported }}** bí danh đã được nhập thành công.
 
 @if($totalNotImported)
-**{{ $totalNotImported }}** {{ $totalNotImported == 1 ? 'alias was' : 'aliases were' }} not imported. Details on why {{ $totalNotImported == 1 ? 'this alias was' : 'these aliases were' }} not imported can be seen below:
+**{{ $totalNotImported }}** bí danh chưa được nhập. Chi tiết lý do xem bên dưới:
 
 @if($totalFailures)
-- **{{ $totalFailures }}** {{ $totalFailures == 1 ? 'alias' : 'aliases' }} had validation failures
+- **{{ $totalFailures }}** bí danh gặp lỗi xác thực
 @endif
 @if($totalErrors)
-- **{{ $totalErrors }}** {{ $totalErrors == 1 ? 'alias was a duplicate (already exists in the database)' : 'aliases were duplicates (already exist in the database)' }}
+- **{{ $totalErrors }}** bí danh bị trùng (đã tồn tại trong cơ sở dữ liệu)
 @endif
 @endif
 
-You can view your newly imported aliases by visiting your account below.
+Bạn có thể xem các bí danh vừa nhập bằng cách truy cập tài khoản bên dưới.
 
 @component('mail::button', ['url' => config('app.url')])
-View Aliases
+Xem danh sách bí danh
 @endcomponent
 @endcomponent

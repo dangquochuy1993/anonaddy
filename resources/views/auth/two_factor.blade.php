@@ -4,7 +4,7 @@
     <div class="p-6 bg-indigo-900 min-h-screen flex justify-center items-center">
         <div class="w-full max-w-md">
             <div class="flex justify-center text-white mb-6 text-5xl font-bold">
-                <img class="w-48" alt="AnonAddy Logo" src="/svg/logo.svg">
+                <img class="w-48" alt="Logo AnonAddy" src="/svg/logo.svg">
             </div>
             <div class="flex flex-col break-words bg-white border-2 rounded-lg shadow-lg overflow-hidden">
                 <form method="POST" action="{{ route('login.2fa') }}">
@@ -52,7 +52,7 @@
                     {{ csrf_field() }}
                     <input type="submit" class="bg-transparent cursor-pointer text-white hover:text-indigo-50 no-underline" value="{{ __('Logout') }}">
                 </form>
-                <a class="text-xs text-white hover:text-indigo-50" href="{{ route('login.backup_code.index') }}">Use backup code</a>
+                  <a class="text-xs text-white hover:text-indigo-50" href="{{ route('login.backup_code.index') }}">{{ __('Use backup code') }}</a>
             </div>
         </div>
     </div>

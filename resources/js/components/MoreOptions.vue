@@ -1,8 +1,8 @@
 <template>
   <Menu as="div" class="relative inline-block text-left">
     <div>
-      <MenuButton class="flex items-center text-grey-400 hover:text-grey-600 focus:outline-none">
-        <span class="sr-only">Open options</span>
+        <MenuButton class="flex items-center text-grey-400 hover:text-grey-600 focus:outline-none">
+          <span class="sr-only">Mở tùy chọn</span>
         <icon
           name="more"
           class="block w-6 h-6 text-grey-300 fill-current cursor-pointer outline-none"

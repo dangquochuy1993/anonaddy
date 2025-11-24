@@ -1,18 +1,18 @@
 @component('mail::message')
 
-# Domain Unverified For Sending
+# Tên miền chưa được xác thực để gửi
 
-A recent DNS record check on your custom domain **{{ $domain }}** failed on AnonAddy. This means that your domain had been unverified for sending until the DNS records are added correctly.
+Kiểm tra DNS gần đây với tên miền tùy chỉnh **{{ $domain }}** đã thất bại. Điều này nghĩa là tên miền chưa được xác thực để gửi thư cho tới khi bạn cấu hình đúng bản ghi.
 
-The check failed for the following reason:
+Bảng kiểm tra thất bại vì:
 
 **{{ $reason }}**
 
-Please visit the domains page on the site by clicking the button below to resolve the issue.
+Hãy truy cập trang tên miền bằng nút bên dưới để khắc phục.
 
-Emails for your custom domain will be sent from an AnonAddy domain in the mean time.
+Trong lúc chờ, email từ tên miền tùy chỉnh của bạn sẽ được gửi qua tên miền mặc định của AnonAddy.
 
 @component('mail::button', ['url' => config('app.url').'/domains'])
-Check Domain
+Kiểm tra tên miền
 @endcomponent
 @endcomponent

@@ -4,7 +4,7 @@
     <div class="p-6 bg-indigo-900 min-h-screen flex justify-center items-center">
         <div class="w-full max-w-md">
             <div class="flex justify-center text-white mb-6 text-5xl font-bold">
-                <img class="w-48" alt="AnonAddy Logo" src="/svg/logo.svg">
+                <img class="w-48" alt="Logo AnonAddy" src="/svg/logo.svg">
             </div>
             <div class="flex flex-col break-words bg-white border-2 rounded-lg shadow-lg overflow-hidden">
                 <form method="POST" action="{{ route('username.email') }}">
@@ -53,11 +53,11 @@
                     </div>
                 </form>
             </div>
-                <p class="w-full text-xs text-center mt-6">
-                    <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
-                        Back to login
-                    </a>
-                </p>
+                  <p class="w-full text-xs text-center mt-6">
+                      <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
+                          {{ __('Back to login') }}
+                      </a>
+                  </p>
         </div>
     </div>
 @endsection

@@ -7,9 +7,9 @@
         @if(session('backupCode'))
             <div class="text-sm border-t-8 rounded text-yellow-800 border-yellow-600 bg-yellow-100 px-3 py-4 mb-4" role="alert">
                 <div class="flex items-center mb-2">
-                    <span class="rounded-full bg-yellow-400 uppercase px-2 py-1 text-xs font-bold mr-2">Important</span>
+                    <span class="rounded-full bg-yellow-400 uppercase px-2 py-1 text-xs font-bold mr-2">Quan trọng</span>
                     <div>
-                        2FA enabled successfully. Please <b>make a copy of your backup code below</b>. If you have an old backup code saved <b>you must update it with this one.</b> If you lose your 2FA device you can use this backup code to disable 2FA on your account. <b>This is the only time this code will be displayed, so be sure not to lose it!</b>
+                        Đã bật 2FA thành công. Vui lòng <b>sao lưu mã dự phòng bên dưới</b>. Nếu bạn đang lưu một mã dự phòng cũ <b>hãy thay thế bằng mã mới này.</b> Khi mất thiết bị 2FA bạn có thể dùng mã dự phòng để tắt 2FA trên tài khoản. <b>Mã chỉ được hiển thị duy nhất lần này nên đừng để thất lạc!</b>
                     </div>
                 </div>
                 <pre class="flex p-3 text-grey-900 bg-white border rounded">
@@ -20,31 +20,31 @@
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Usage
+                Mức sử dụng
             </h2>
-            <p class="text-grey-500">Account Usage details</p>
+            <p class="text-grey-500">Thông tin chi tiết về mức sử dụng tài khoản</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
             <div>
                 <h3 class="font-bold text-xl">
-                    Bandwidth
+                    Băng thông
                 </h3>
 
                 <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                <p class="mt-6">You've used <b>{{ $user->bandwidth_mb }}MB out of your {{ $user->getBandwidthLimitMb() }}MB limit</b> this calendar month ({{ now()->format('F') }}).</p>
-                <p class="mt-4">Your bandwidth usage will reset on <b>{{ now()->addMonthsNoOverflow(1)->startOfMonth()->format('jS F') }}</b>.</p>
-                <p class="mt-4">At the start of each calendar month your bandwidth usage is reset to 0. If you get close to your bandwidth limit we'll send you emails to let you know.</p>
-                <p class="mt-4">If you go over your limit we will start rejecting emails until your bandwidth usage drops back below your limit.</p>
+                <p class="mt-6">Bạn đã dùng <b>{{ $user->bandwidth_mb }}MB / {{ $user->getBandwidthLimitMb() }}MB</b> trong tháng hiện tại ({{ now()->format('F') }}).</p>
+                <p class="mt-4">Dung lượng băng thông sẽ được đặt lại vào <b>{{ now()->addMonthsNoOverflow(1)->startOfMonth()->format('jS F') }}</b>.</p>
+                <p class="mt-4">Đầu mỗi tháng dương lịch, mức sử dụng băng thông sẽ trở về 0. Nếu bạn sắp chạm giới hạn, chúng tôi sẽ gửi email thông báo.</p>
+                <p class="mt-4">Khi vượt hạn mức, hệ thống sẽ từ chối email đến cho đến khi băng thông giảm xuống dưới giới hạn.</p>
             </div>
         </div>
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Settings
+                Cài đặt
             </h2>
-            <p class="text-grey-500">Update preferences</p>
+            <p class="text-grey-500">Điều chỉnh tùy chọn của bạn</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
@@ -57,12 +57,12 @@
                     <div class="mb-6">
 
                         <h3 class="font-bold text-xl">
-                            Update Default Recipient
+                            {{ __('Update Default Recipient') }}
                         </h3>
 
                         <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                        <p class="mt-6">The default recipient is used for all new aliases and any aliases that do not have any recipients attached. Once an alias has been created in your dashboard you can update the recipient to a different one.</p>
+                        <p class="mt-6">Người nhận mặc định được áp dụng cho mọi bí danh mới và các bí danh chưa gán người nhận riêng. Sau khi bí danh đã được tạo trong bảng điều khiển, bạn có thể đổi sang người nhận khác bất kỳ lúc nào.</p>
 
                         <div class="mt-6 flex flex-wrap mb-4">
                             <label for="default-recipient" class="block text-grey-700 text-sm mb-2">
@@ -97,18 +97,18 @@
 
             @else
 
-                <form method="POST" action="{{ route('settings.edit_default_recipient') }}">
+                    <form method="POST" action="{{ route('settings.edit_default_recipient') }}">
                     @csrf
 
                     <div class="mb-6">
 
                         <h3 class="font-bold text-xl">
-                            Update Email
+                            {{ __('Update Email') }}
                         </h3>
 
                         <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                        <p class="mt-6">Made a mistake or typo with the email addresss you signed up with? Update your email below, you'll receive a new email verification link.</p>
+                        <p class="mt-6">Lỡ nhập sai địa chỉ email khi đăng ký? Hãy cập nhật lại email bên dưới, bạn sẽ nhận được email xác minh mới.</p>
 
                         <div class="mt-6 flex flex-wrap mb-4">
                             <label for="email" class="block text-grey-700 text-sm mb-2">
@@ -152,12 +152,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Update Default Alias Domain
+                        {{ __('Update Default Alias Domain') }}
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">The default alias domain is the domain you'd like to be selected by default in the drop down options when generating a new alias on the site or the browser extension. This will save you needing to select your preferred domain from the dropdown each time.</p>
+                    <p class="mt-6">Tên miền bí danh mặc định sẽ được chọn sẵn khi bạn tạo bí danh mới trên trang web hoặc tiện ích trình duyệt. Nhờ vậy bạn không cần chọn đi chọn lại tên miền yêu thích mỗi lần.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="default-alias-domain" class="block text-grey-700 text-sm mb-2">
@@ -196,12 +196,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Update Default Alias Format
+                        {{ __('Update Default Alias Format') }}
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">The default alias format is the format you'd like to be selected by default in the drop down options when generating a new alias on the site or the browser extension. This will save you needing to select your preferred format from the dropdown each time.</p>
+                    <p class="mt-6">Định dạng bí danh mặc định sẽ được áp dụng sẵn khi bạn tạo bí danh mới, giúp tiết kiệm thời gian chọn lựa lại mỗi lần.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="default-alias-format" class="block text-grey-700 text-sm mb-2">
@@ -209,12 +209,12 @@
                         </label>
 
                         <div class="block relative w-full">
-                            <select id="default-alias-format" class="block appearance-none w-full text-grey-700 bg-grey-100 p-3 pr-8 rounded shadow focus:ring" name="format" required>
-                                <option value="random_characters" {{ $user->default_alias_format === 'random_characters' ? 'selected' : '' }}>Random Characters</option>
-                                <option value="uuid" {{ $user->default_alias_format === 'uuid' ? 'selected' : '' }}>UUID</option>
-                                <option value="random_words" {{ $user->default_alias_format === 'random_words' ? 'selected' : '' }}>Random Words</option>
-                                <option value="custom" {{ $user->default_alias_format === 'custom' ? 'selected' : '' }}>Custom</option>
-                            </select>
+                                <select id="default-alias-format" class="block appearance-none w-full text-grey-700 bg-grey-100 p-3 pr-8 rounded shadow focus:ring" name="format" required>
+                                    <option value="random_characters" {{ $user->default_alias_format === 'random_characters' ? 'selected' : '' }}>Ký tự ngẫu nhiên</option>
+                                    <option value="uuid" {{ $user->default_alias_format === 'uuid' ? 'selected' : '' }}>UUID</option>
+                                    <option value="random_words" {{ $user->default_alias_format === 'random_words' ? 'selected' : '' }}>Từ ngẫu nhiên</option>
+                                    <option value="custom" {{ $user->default_alias_format === 'custom' ? 'selected' : '' }}>Tùy chỉnh</option>
+                                </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
@@ -241,14 +241,14 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Use Reply-To Header For Replying
+                        Dùng tiêu đề Reply-To khi trả lời
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">This will determine if forwarded emails use the From header or the Reply-To header for sending replies. Some users may find it easier to set up inbox filters having the From: header set as just the alias.
+                    <p class="mt-6">Tùy chọn này quyết định email chuyển tiếp sẽ dùng tiêu đề From hay Reply-To khi bạn trả lời. Một số người thích đặt bộ lọc hộp thư khi tiêu đề From chỉ chứa bí danh.
                     </p>
-                    <p class="mt-4">If enabled, then the <b>From:</b> header will be set as the alias email e.g. <b>alias{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}</b> instead of the default <b class="break-words">alias+sender=example.com{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}</b> (this will be set as the Reply-To header instead)</p>
+                    <p class="mt-4">Khi bật, trường <b>From:</b> sẽ là địa chỉ bí danh, ví dụ <b>alias{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}</b> thay vì định dạng mặc định <b class="break-words">alias+sender=example.com{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}</b> (định dạng mặc định sẽ được đưa sang Reply-To).</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="use_reply_to" class="block text-grey-700 text-sm mb-2">
@@ -257,8 +257,8 @@
 
                         <div class="block relative w-full">
                             <select id="use_reply_to" class="block appearance-none w-full text-grey-700 bg-grey-100 p-3 pr-8 rounded shadow focus:ring" name="use_reply_to" required>
-                                <option value="1" {{ $user->use_reply_to ? 'selected' : '' }}>Enabled</option>
-                                <option value="0" {{ ! $user->use_reply_to ? 'selected' : '' }}>Disabled</option>
+                                <option value="1" {{ $user->use_reply_to ? 'selected' : '' }}>Bật</option>
+                                <option value="0" {{ ! $user->use_reply_to ? 'selected' : '' }}>Tắt</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -275,7 +275,7 @@
                 </div>
 
                 <button type="submit" class="bg-cyan-400 w-full hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">
-                    Update Use Reply-To
+                    {{ __('Update Use Reply-To') }}
                 </button>
             </form>
 
@@ -285,12 +285,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Update Password
+                        {{ __('Update Password') }}
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">Ensure your account is using a long, random, unique password to stay secure. It is recommended to use a password manager such as BitWarden. Updating your password will also logout your active sessions on other browsers and devices.</p>
+                    <p class="mt-6">Hãy dùng mật khẩu dài, ngẫu nhiên và độc nhất để giữ tài khoản an toàn. Bạn nên sử dụng trình quản lý mật khẩu (ví dụ Bitwarden). Khi đổi mật khẩu, mọi phiên đăng nhập đang hoạt động trên trình duyệt hoặc thiết bị khác cũng sẽ bị đăng xuất.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="current" class="block text-grey-700 text-sm mb-2">
@@ -343,12 +343,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Browser Sessions
+                        Phiên trình duyệt
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">If necessary, you may logout of all of your other browser sessions across all of your devices. If you feel your account has been compromised, you should also update your password.</p>
+                    <p class="mt-6">Nếu cần, bạn có thể đăng xuất khỏi toàn bộ phiên trình duyệt khác trên mọi thiết bị. Khi nghi ngờ tài khoản bị xâm phạm, hãy đổi mật khẩu ngay.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="current-password-sessions" class="block text-grey-700 text-sm mb-2">
@@ -376,9 +376,9 @@
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Two-Factor Authentication
+                Xác thực hai yếu tố
             </h2>
-            <p class="text-grey-500">Manage your 2FA options</p>
+            <p class="text-grey-500">Quản lý các lựa chọn 2FA</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
@@ -386,35 +386,35 @@
             <div id="two-factor">
 
                 <h3 class="font-bold text-xl">
-                Information
+                    Thông tin
                 </h3>
 
                 <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
                 <p class="mt-6">
-                    Two-factor authentication, also known as 2FA or multi-factor, adds an extra layer of security to your account beyond your username and password. There are <b>two options for 2FA</b> - Authentication App (e.g. Google Authenticator or another, Aegis, andOTP) or Hardware Security Key (e.g. YubiKey, SoloKey, Nitrokey).
+                    Xác thực hai yếu tố (2FA) bổ sung một lớp bảo mật ngoài tên đăng nhập và mật khẩu. Có <b>hai lựa chọn 2FA</b> – ứng dụng tạo mã (Google Authenticator, Aegis, andOTP…) hoặc khóa bảo mật phần cứng (YubiKey, SoloKey, Nitrokey…).
                 </p>
 
                 <p class="mt-4 pb-16">
-                    When you login with 2FA enabled, you will be prompted to use a security key or enter a OTP (one time passcode) depending on which method you choose below. You can only have one method of 2nd factor authentication enabled at once.
+                    Khi đăng nhập với 2FA, bạn sẽ được yêu cầu dùng khóa bảo mật hoặc nhập mã OTP tùy phương thức đã kích hoạt. Bạn chỉ có thể bật một phương thức 2FA tại cùng thời điểm.
                 </p>
 
                 @if($user->two_factor_enabled || LaravelWebauthn\Facades\Webauthn::enabled($user))
                     <h3 class="font-bold text-xl">
-                        Generate New Backup Code
+                        Tạo mã dự phòng mới
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
                     <p class="my-4">
-                        The backup code can be used in a situation where you have lost your 2FA device to allow you to access your account.
-                        If you've forgotten or lost your backup code then you can generate a new one by clicking the button below. <b>This code will only be displayed once</b> so make sure you store it in a <b>secure place</b>.
+                        Mã dự phòng cho phép đăng nhập khi bạn mất thiết bị 2FA.
+                        Nếu quên hoặc thất lạc mã cũ hãy tạo mã mới bằng nút bên dưới. <b>Mã chỉ hiển thị một lần</b> nên hãy lưu ở nơi <b>an toàn</b>.
                     </p>
 
                     <form method="POST" action="{{ route('settings.new_backup_code') }}" class="pb-16">
                         @csrf
                         <button type="submit" class="bg-cyan-400 w-full hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">
-                            Generate New Backup Code
+                            Tạo mã dự phòng mới
                         </button>
                     </form>
                 @endif
@@ -426,13 +426,13 @@
 
                         <div class="mb-6">
 
-                            <h3 class="font-bold text-xl">
-                                Disable Authentication App (TOTP)
-                            </h3>
+                        <h3 class="font-bold text-xl">
+                            Tắt ứng dụng xác thực (TOTP)
+                        </h3>
 
                             <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                            <p class="mt-6">To disable 2 factor authentication enter your password below. You can always enable it again later if you wish.</p>
+                        <p class="mt-6">Để tắt 2FA bằng ứng dụng, hãy nhập mật khẩu của bạn bên dưới. Bạn có thể bật lại bất cứ lúc nào.</p>
 
                             <div class="mt-6 flex flex-wrap">
                                 <label for="current_password_2fa" class="block text-grey-700 text-sm mb-2">
@@ -467,19 +467,19 @@
                         <div class="mb-6">
 
                             <h3 class="font-bold text-xl">
-                                Enable Authentication App (TOTP)
+                                Bật ứng dụng xác thực (TOTP)
                             </h3>
 
                             <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                            <p class="mt-6">TOTP 2 factor authentication requires the use of Google Authenticator or another compatible app such as Aegis or andOTP (both on F-droid) for Android. Alternatively, you can use the code below. Make sure that you write down your secret code in a safe place.</p>
+                            <p class="mt-6">Để dùng TOTP bạn cần ứng dụng như Google Authenticator, Aegis hoặc andOTP (Android). Bạn cũng có thể nhập thủ công bằng mã bên dưới. Hãy lưu mã bí mật ở nơi an toàn.</p>
 
                             <div>
                                 {!! $qrCode !!}
-                                <p class="mb-2">Secret: {{ $authSecret }}</p>
+                                <p class="mb-2">Mã bí mật: {{ $authSecret }}</p>
                                 <form method="POST" action="{{ route('settings.2fa_regenerate') }}">
                                     @csrf
-                                    <input type="submit" class="text-indigo-900 bg-transparent cursor-pointer" value="Click here to regenerate your secret key">
+                                    <input type="submit" class="text-indigo-900 bg-transparent cursor-pointer" value="Bấm để tạo lại mã bí mật">
 
                                     @if ($errors->has('regenerate_2fa'))
                                         <p class="text-red-500 text-xs italic mt-4">
@@ -516,19 +516,19 @@
                         <div class="pt-16">
 
                             <h3 class="font-bold text-xl">
-                                Enable Device Authentication (WebAuthn)
+                                Bật xác thực bằng thiết bị (WebAuthn)
                             </h3>
 
                             <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                            <p class="my-6">WebAuthn is a new W3C global standard for secure authentication. You can use any hardware key such as a Yubikey, Solokey, NitroKey etc.</p>
+                            <p class="my-6">WebAuthn là tiêu chuẩn bảo mật mới của W3C. Bạn có thể dùng bất kỳ khóa phần cứng nào như YubiKey, SoloKey, Nitrokey...</p>
 
                             <a
                             type="button"
                             href="{{ route('webauthn.create') }}"
                             class="block bg-cyan-400 w-full hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none text-center"
                             >
-                                Register New Hardware Key
+                                Đăng ký khóa bảo mật mới
                             </a>
 
                         </div>
@@ -541,9 +541,9 @@
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Other Settings
+                Các cài đặt khác
             </h2>
-            <p class="text-grey-500">Update your other account preferences</p>
+            <p class="text-grey-500">Điều chỉnh những tùy chọn còn lại</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
@@ -554,12 +554,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Update From Name
+                        {{ __('Update From Name') }}
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">The from name is shown when you reply anonymously to a forwarded email. If set to empty then the email alias will be used as the from name e.g. "ebay{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}".</p>
+                    <p class="mt-6">Tên hiển thị được dùng khi bạn trả lời email được chuyển tiếp ẩn danh. Nếu để trống, bí danh email sẽ được dùng làm tên hiển thị, ví dụ "ebay{{ '@'.$user->username }}.{{ config('anonaddy.domain') }}".</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="from_name" class="block text-grey-700 text-sm mb-2">
@@ -591,12 +591,12 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Update Email Banner Location
+                        {{ __('Update Banner Location') }}
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">This is the information displayed in forwarded emails letting you know who the email was from and which alias it was sent to. You can choose for it to be displayed at the top or bottom of the email or just turn if off altogether.</p>
+                    <p class="mt-6">Đây là phần thông tin xuất hiện trong email chuyển tiếp để bạn biết người gửi và bí danh nhận. Bạn có thể hiển thị ở đầu, cuối email hoặc tắt hẳn.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="banner_location" class="block text-grey-700 text-sm mb-2">
@@ -605,9 +605,9 @@
 
                         <div class="block relative w-full">
                             <select id="banner_location" class="block appearance-none w-full text-grey-700 bg-grey-100 p-3 pr-8 rounded shadow focus:ring" name="banner_location" required>
-                                <option value="top" {{ $user->banner_location === 'top' ? 'selected' : '' }}>Top</option>
-                                <option value="bottom" {{ $user->banner_location === 'bottom' ? 'selected' : '' }}>Bottom</option>
-                                <option value="off" {{ $user->banner_location === 'off' ? 'selected' : '' }}>Off</option>
+                                <option value="top" {{ $user->banner_location === 'top' ? 'selected' : '' }}>Phía trên</option>
+                                <option value="bottom" {{ $user->banner_location === 'bottom' ? 'selected' : '' }}>Phía dưới</option>
+                                <option value="off" {{ $user->banner_location === 'off' ? 'selected' : '' }}>Tắt</option>
 
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -636,13 +636,13 @@
                 <div class="mb-6">
 
                     <h3 class="font-bold text-xl">
-                        Replace Email Subject
+                        Thay thế tiêu đề email
                     </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">This is useful if you are <b>using encryption</b>. After you add your public GPG/OpenPGP key for a recipient the body of forwarded emails will be encrypted (this includes email attachments). Unfortunately the email subject cannot be encrypted as it is one of the headers. To prevent revealing the contents of emails you can replace the subject with something generic below e.g. "The subject" or "Hello".</p>
-                    <p class="mt-4">If set to empty then the email's original subject will be used.</p>
+                    <p class="mt-6">Tùy chọn này hữu ích khi bạn <b>sử dụng mã hóa</b>. Sau khi thêm khóa GPG/OpenPGP công khai cho người nhận, nội dung email chuyển tiếp (kể cả tệp đính kèm) sẽ được mã hóa, nhưng tiêu đề thì không. Để tránh lộ nội dung, bạn có thể thay tiêu đề bằng một chuỗi chung chung, ví dụ "Thông báo" hoặc "Xin chào".</p>
+                    <p class="mt-4">Nếu để trống, hệ thống sẽ dùng tiêu đề gốc.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="email_subject" class="block text-grey-700 text-sm mb-2">
@@ -674,7 +674,7 @@
             <h2 class="text-3xl font-bold">
                 API
             </h2>
-            <p class="text-grey-500">Manage your API Access Tokens</p>
+            <p class="text-grey-500">Quản lý token truy cập API</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
@@ -685,28 +685,28 @@
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Data
+                Dữ liệu
             </h2>
-            <p class="text-grey-500">Manage your account data</p>
+            <p class="text-grey-500">Quản lý dữ liệu tài khoản của bạn</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow mb-10">
 
             <div class="mb-6">
                 <h3 class="font-bold text-xl">
-                    Import Aliases
+                    Nhập bí danh
                 </h3>
 
                 <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                <p class="mt-6">You can import aliases for <b>your custom domains</b> by uploading a CSV file. Please note this is <b>only available for custom domains</b>.</p>
+                <p class="mt-6">Bạn có thể nhập bí danh cho <b>các tên miền tùy chỉnh</b> bằng cách tải lên tệp CSV. Lưu ý tính năng này <b>chỉ hỗ trợ tên miền tùy chỉnh</b>.</p>
 
 
-                <p class="mt-4">Aliases that <b>already exist</b> will not be imported.</p>
-                <p class="mt-4">The import is <b>limited to 1,000 rows (aliases)</b>. Please ensure you use multiple CSV files if you need to import more than this.</p>
-                <p class="mt-4">Please use the template file provided below. Only CSV files are supported.</p>
-                <p class="mt-4">The import will take a few minutes. You will <b>receive an email</b> once it is complete.</p>
-                <p class="mt-4"><a href="/import-aliases-template.csv" rel="nofollow noopener noreferrer" class="text-indigo-700 cursor-pointer">Click here to download the CSV import template</a></p>
+                <p class="mt-4">Những bí danh <b>đã tồn tại</b> sẽ không được nhập lại.</p>
+                <p class="mt-4">Mỗi lần nhập tối đa <b>1.000 dòng</b>. Nếu cần thêm, hãy chia thành nhiều tệp CSV.</p>
+                <p class="mt-4">Vui lòng dùng mẫu CSV bên dưới. Chỉ hỗ trợ định dạng CSV.</p>
+                <p class="mt-4">Quá trình nhập có thể mất vài phút và bạn sẽ <b>nhận email thông báo</b> khi hoàn tất.</p>
+                <p class="mt-4"><a href="/import-aliases-template.csv" rel="nofollow noopener noreferrer" class="text-indigo-700 cursor-pointer">Bấm để tải mẫu CSV</a></p>
             </div>
 
             <form action="{{ route('aliases.import') }}" method="POST" enctype="multipart/form-data">
@@ -719,32 +719,32 @@
                         </p>
                     @endif
                     <div class="mt-4">
-                        <button type="submit" class="bg-cyan-400 block w-full text-center hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">Import Alias Data</button>
+                        <button type="submit" class="bg-cyan-400 block w-full text-center hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">Nhập dữ liệu bí danh</button>
                     </div>
                 </div>
             </form>
 
             <div class="my-6">
                 <h3 class="font-bold text-xl">
-                    Export Aliases
+                    Xuất bí danh
                 </h3>
 
                 <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                <p class="mt-6">You can click the button below to export all the data for your <b>{{ $user->aliases()->withTrashed()->count() }}</b> aliases as a .csv file.</p>
+            <p class="mt-6">Nhấn nút bên dưới để xuất dữ liệu của <b>{{ $user->aliases()->withTrashed()->count() }}</b> bí danh dưới dạng tệp .csv.</p>
             </div>
 
-            <a href="{{ route('aliases.export') }}" class="bg-cyan-400 block w-full text-center hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">
-                Export Alias Data
-            </a>
+        <a href="{{ route('aliases.export') }}" class="bg-cyan-400 block w-full text-center hover:bg-cyan-300 text-cyan-900 font-bold py-3 px-4 rounded focus:outline-none">
+            Xuất dữ liệu bí danh
+        </a>
 
         </div>
 
         <div class="mb-4">
             <h2 class="text-3xl font-bold">
-                Danger Zone
+                Khu vực nguy hiểm
             </h2>
-            <p class="text-grey-500">Irreversible and destructive actions</p>
+            <p class="text-grey-500">Những thao tác không thể hoàn tác</p>
         </div>
 
         <div class="px-6 py-8 md:p-10 bg-white rounded-lg shadow">
@@ -754,13 +754,13 @@
 
                 <div class="mb-6">
 
-                    <h3 class="font-bold text-xl">
-                        Delete Account
-                    </h3>
+                <h3 class="font-bold text-xl">
+                    {{ __('Delete Account') }}
+                </h3>
 
                     <div class="mt-4 w-24 border-b-2 border-grey-200"></div>
 
-                    <p class="mt-6">Once you delete your account, there is no going back. This username will not be able to be used again. Please make sure you are certain.</p>
+                <p class="mt-6">Sau khi xóa tài khoản, bạn không thể khôi phục. Tên người dùng này cũng không thể được sử dụng lại. Hãy chắc chắn trước khi tiếp tục.</p>
 
                     <div class="mt-6 flex flex-wrap mb-4">
                         <label for="current-password-delete" class="block text-grey-700 text-sm mb-2">

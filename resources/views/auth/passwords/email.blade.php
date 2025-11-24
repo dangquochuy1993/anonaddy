@@ -4,7 +4,7 @@
     <div class="p-6 bg-indigo-900 min-h-screen flex justify-center items-center">
         <div class="w-full max-w-md">
             <div class="flex justify-center text-white mb-6 text-5xl font-bold">
-                <img class="w-48" alt="AnonAddy Logo" src="/svg/logo.svg">
+                <img class="w-48" alt="Logo AnonAddy" src="/svg/logo.svg">
             </div>
             <div class="flex flex-col break-words bg-white border-2 rounded-lg shadow-lg overflow-hidden">
                 <form method="POST" action="{{ route('password.email') }}">
@@ -31,7 +31,7 @@
 
                             <input id="username" type="text" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:ring{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="johndoe" required>
 
-                            <p class="text-xs mt-1 text-grey-600">Note: your username is <b>not</b> your email address.</p>
+                            <p class="text-xs mt-1 text-grey-600">Lưu ý: tên người dùng <b>không phải</b> địa chỉ email của bạn.</p>
 
                             @if ($errors->has('username'))
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -53,11 +53,11 @@
                     </div>
                 </form>
             </div>
-                <p class="w-full text-xs text-center mt-6">
-                    <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
-                        Back to login
-                    </a>
-                </p>
+                  <p class="w-full text-xs text-center mt-6">
+                      <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
+                          {{ __('Back to login') }}
+                      </a>
+                  </p>
         </div>
     </div>
 @endsection
