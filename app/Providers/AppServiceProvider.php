@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\PersonalAccessToken;
+use App\Services\Chat\ChatConnectorManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Sanctum::ignoreMigrations();
+
+        $this->app->singleton(ChatConnectorManager::class, function ($app) {
+            return new ChatConnectorManager($app['config']->get('chat', []));
+        });
     }
 
     /**

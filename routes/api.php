@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\ApiTokenDetailController;
 use App\Http\Controllers\Api\AppVersionController;
 use App\Http\Controllers\Api\CatchAllDomainController;
 use App\Http\Controllers\Api\CatchAllUsernameController;
+use App\Http\Controllers\Api\ChatConnectorController;
 use App\Http\Controllers\Api\DomainController;
 use App\Http\Controllers\Api\DomainDefaultRecipientController;
 use App\Http\Controllers\Api\DomainOptionController;
@@ -150,6 +151,13 @@ Route::group([
         Route::get('/failed-deliveries', 'index');
         Route::get('/failed-deliveries/{id}', 'show');
         Route::delete('/failed-deliveries/{id}', 'destroy');
+    });
+
+    Route::prefix('chat')->controller(ChatConnectorController::class)->group(function () {
+        Route::get('/connectors', 'index');
+        Route::post('/connectors/{connector}/messages', 'send');
+        Route::post('/connectors/{connector}/sync', 'sync');
+        Route::post('/connectors/{connector}/test', 'test');
     });
 
     Route::get('/domain-options', [DomainOptionController::class, 'index']);
